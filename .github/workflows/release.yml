@@ -1,0 +1,51 @@
+name: "Release"
+on:
+  workflow_dispatch:
+    inputs:
+      bump_version_scheme:
+        description: "Bump version scheme"
+        required: true
+        default: "patch"
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  release:
+    name: Tag and Release
+    runs-on: "ubuntu-latest"
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: rymndhng/release-on-push-action@master
+        id: release
+        with:
+          bump_version_scheme: ${{ github.event.inputs.bump_version_scheme }}
+          use_github_release_notes: true
+          tag_prefix: "v"
+
+      - name: Check Output Parameters
+        run: |
+          echo "Got tag name ${{ steps.release.outputs.tag_name }}"
+          echo "Got release version ${{ steps.release.outputs.version }}"
+          echo "Upload release artifacts to ${{ steps.release.outputs.upload_url }}"
+
+      - name: Update Version
+        run: |
+          echo "Update version to ${{ steps.release.outputs.version }}"
+          sed -i 's/const Version = .*/const Version = \"${{ steps.release.outputs.version }}\"/g' version.go
+          git status
+
+      - uses: fregante/setup-git-user@v2
+      - run: git add version.go
+      - run: git commit -m "Bump version to ${{ steps.release.outputs.version }}"
+      - run: git push
