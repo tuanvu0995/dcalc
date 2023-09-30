@@ -1,0 +1,10 @@
+.bottom-bar__container {
+  display: flex;
+  height: 28px;
+  min-height: 28px;
+  justify-content: space-between;
+
+  align-items: center;
+  border-top: 1px solid #787878;
+  padding: 8px;
+}

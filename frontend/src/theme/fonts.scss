@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "SF Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""),
+    url("/src/assets/fonts/SF-Mono-Regular.otf") format("otf");
+}
+
+@font-face {
+  font-family: "SF Mono";
+  font-style: normal;
+  font-weight: 600;
+  src: local(""),
+    url("/src/assets/fonts/SF-Mono-Bold.otf") format("otf");
+}

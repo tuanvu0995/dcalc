@@ -1,0 +1,135 @@
+@charset "utf-8";
+
+@import "./variables.scss";
+@import "./fonts.scss";
+
+@import "bulma/sass/utilities/_all.sass";
+@import "bulma/sass/base/_all.sass";
+@import "bulma/sass/elements/button.sass";
+@import "bulma/sass/elements/table.sass";
+@import "bulma/sass/elements/image.sass";
+@import "bulma/sass/elements/title.sass";
+@import "bulma/sass/elements/content.sass";
+@import "bulma/sass/form/_all.sass";
+@import "bulma/sass/helpers/_all.sass";
+
+html {
+  font-size: $font-size;
+  overflow: hidden;
+}
+
+html,
+body {
+  font-family: $font-family;
+  font-weight: 400;
+  word-spacing: -3px;
+  line-height: 1.4;
+  background-color: $body-background-color;
+  color: $text-color;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.table {
+  font-size: 1.1rem;
+  font-family: $font-family;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 960px;
+  height: 100vh;
+  width: 100vw;
+
+  &.is-center {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.scrollable {
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+}
+
+.cursor {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+
+  &::after {
+    content: "";
+    width: 10px;
+    height: 2px;
+    background: $text-color;
+    display: inline-block;
+    animation: cursor-blink 1.5s steps(2) infinite;
+    bottom: 0rem;
+    right: -0.8rem;
+    position: absolute;
+  }
+
+  @keyframes cursor-blink {
+    0% {
+      opacity: 0;
+    }
+  }
+}
+
+.tag {
+  font-weight: 600;
+}
+
+.hidden-input {
+  position: absolute;
+  left: -9999px;
+}
+
+.content {
+  color: #363636;
+  font-size: 10px;
+
+  h1 {
+    font-size: 1.5em;
+    margin-bottom: 0.3em;
+    &:not(:first-child) {
+      margin-top: 1em;
+    }
+  }
+  h2 {
+    font-size: 1.35em;
+    margin-bottom: 0.5714em;
+    &:not(:first-child) {
+      margin-top: 1.1428em;
+    }
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+}
+
+div {
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+    border-radius: 4px;
+  }
+}
