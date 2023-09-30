@@ -21,11 +21,34 @@ go install github.com/wailsapp/wails/v2/cmd/wails@latest
 
 Clone the repository:
 ```bash
-git clone http:
+git clone https://github.com/tuanvu0995/dcalc.git
 cd DCalc
 go mod tidy
-wails build -platform <platform>
 
+```
+
+## Development
+
+To run DCalc in development mode, run the following command in your terminal:
+
+```bash
+wails dev
+```
+
+## Build
+
+To build DCalc, run the following command in your terminal:
+
+```bash
+wails build --platform <platform>
+
+```
+
+E.g.:
+
+```bash
+wails build --platform darwin/arm64
+wails build --platform window/amd64
 ```
 
 Platform options:
@@ -40,14 +63,6 @@ Platform options:
 | windows/amd64   | Windows 10/11 AMD64        |
 | windows/arm64      | Windows 10/11 ARM64       |
 
-
-## Development
-
-To run DCalc in development mode, run the following command in your terminal:
-
-```bash
-wails dev
-```
 
 ## License
 
